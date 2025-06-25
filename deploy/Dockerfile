@@ -67,7 +67,7 @@ FROM scratch AS kaniko-base-slim
 RUN --mount=from=busybox,dst=/usr/ ["busybox", "sh", "-c", "mkdir -p /kaniko && chmod 777 /kaniko"]
 
 COPY --from=certs /etc/ssl/certs/ca-certificates.crt /kaniko/ssl/certs/
-#COPY files/nsswitch.conf /etc/nsswitch.conf
+COPY files/nsswitch.conf /etc/nsswitch.conf
 ENV HOME /root
 ENV USER root
 ENV PATH /usr/local/bin:/kaniko
